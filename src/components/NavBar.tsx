@@ -3,13 +3,18 @@ import logo_img from './../assets/Logo4.png'
 
 interface NavBarProps {
     logo?: ImageBitmap;
-    links?: { label: string; href: string }[];
+    portfolio_links?: { label: string; href: string }[];
+    organization_links?: { label: string; href: string }[];
 }
 
 const NavBar: React.FC<NavBarProps> = ({
-    links = [
+    organization_links: org_links = [
         { label: "About", href: "#" },
         { label: "Contact", href: "#" }
+    ],
+    portfolio_links: port_links = [
+        { label: "Shader example", href: "/logo_shader.html" },
+        { label: "Slicing game", href: "/slicing_game.html" }
     ]
 }) => {
     const navStyle: React.CSSProperties = {
@@ -23,19 +28,27 @@ const NavBar: React.FC<NavBarProps> = ({
     const linkStyle: React.CSSProperties = {
         color: 'white',
         textDecoration: 'none',
-        margin: '0 10px'
+        margin: '0 10px',
+        verticalAlign: 'middle'
     };
 
     const logoStyle: React.CSSProperties = {
-        color: 'white',
         textDecoration: 'none',
+        display: 'block'
     };
 
     return (
         <nav style={navStyle}>
-            <a href='#'><img src={logo_img} height={30} style={logoStyle}/></a>
+            <a href='./index.html'><img src={logo_img} height={40} style={logoStyle} /></a>
             <div>
-                {links.map((link, index) => (
+                {port_links.map((link, index) => (
+                    <a key={index} href={link.href} style={linkStyle}>
+                        {link.label}
+                    </a>
+                ))}
+            </div>
+            <div>
+                {org_links.map((link, index) => (
                     <a key={index} href={link.href} style={linkStyle}>
                         {link.label}
                     </a>

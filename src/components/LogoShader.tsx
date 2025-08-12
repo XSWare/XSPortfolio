@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 
-export default function WebAssemblyCanvas() {
+export default function LogoShader() {
     useEffect(() => {
         import("../logo_shader/shader_post_processing_example.js").then(module => {
             module.default();
         });
     }, []);
 
-    return <div id="wasm-example" style={{ width: "800px", height: "220px", border: "1px solid red" }} />;
+    return <canvas id="wasm-canvas" style={{ width: "800px", height: "220px", outline: "none"}} />;
 }
