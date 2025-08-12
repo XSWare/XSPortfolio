@@ -7,7 +7,9 @@ function SlicingGameTab() {
     return (
         <>
             <NavBar />
-            <ShatterGame />
+            <div style={{ minHeight: "100vh", justifyContent: "center", alignItems: "center", display: "flex" }}>
+                <ShatterGame />
+            </div>
         </>
     )
 }

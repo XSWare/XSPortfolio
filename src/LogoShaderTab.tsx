@@ -7,7 +7,9 @@ function LogoShaderTab() {
     return (
         <>
             <NavBar />
-            <LogoShader />
+            <div style={{ minHeight: "100vh", justifyContent: "center", alignItems: "center", display: "flex" }}>
+                <LogoShader />
+            </div>
         </>
     )
 }

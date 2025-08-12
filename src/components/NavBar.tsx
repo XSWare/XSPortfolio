@@ -21,14 +21,17 @@ const NavBar: React.FC<NavBarProps> = ({
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'stretch',
-        backgroundColor: '#282c34',
+        backgroundColor: 'white',
         color: 'white'
     };
 
     const linkStyle: React.CSSProperties = {
-        color: 'white',
+        color: 'black',
+        fontSize: '16px',
+        fontWeight: 'bold',
         textDecoration: 'none',
         margin: '0 10px',
+        textAlign: 'center',
         verticalAlign: 'middle'
     };
 
@@ -40,14 +43,14 @@ const NavBar: React.FC<NavBarProps> = ({
     return (
         <nav style={navStyle}>
             <a href='./index.html'><img src={logo_img} height={40} style={logoStyle} /></a>
-            <div>
+            <div style={{ placeContent: "center" }}>
                 {port_links.map((link, index) => (
                     <a key={index} href={link.href} style={linkStyle}>
                         {link.label}
                     </a>
                 ))}
             </div>
-            <div>
+            <div style={{ placeContent: "center" }}>
                 {org_links.map((link, index) => (
                     <a key={index} href={link.href} style={linkStyle}>
                         {link.label}
