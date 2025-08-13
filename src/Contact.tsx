@@ -1,15 +1,15 @@
 import NavBar from './components/NavBar';
 
-function About() {
+function Contact() {
     return (
         <>
             <NavBar isSPA={true} />
             <div style={{ padding: '20px', textAlign: 'center' }}>
-                <h1>About Page</h1>
-                <p>This is a dummy about page.</p>
+                <h1>Contact Page</h1>
+                <p>This is a dummy contact page.</p>
             </div>
         </>
     );
 }
 
-export default About;
+export default Contact;

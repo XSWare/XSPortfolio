@@ -3,21 +3,23 @@ import { Link } from 'react-router-dom';
 import logo_img from './../assets/Logo4.png';
 
 interface NavBarProps {
-    logo?: ImageBitmap;
+    isSPA: boolean;
+    logo?: string;
     portfolio_links?: { label: string; href: string }[];
     organization_links?: { label: string; href: string }[];
 }
 
-const NavBar: React.FC<NavBarProps> = ({
-    organization_links: org_links = [
-        { label: "About", href: "/about" },
-        { label: "Contact", href: "#" },
-    ],
-    portfolio_links: port_links = [
+function NavBar({
+    isSPA,
+    logo = logo_img,
+    portfolio_links = [
         { label: "Shader example", href: "/logo_shader.html" },
         { label: "Slicing game", href: "/slicing_game.html" }
-    ]
-}) => {
+    ], organization_links = [
+        { label: "About", href: "/about" },
+        { label: "Contact", href: "/contact" },
+    ] }: NavBarProps) {
+
     const navStyle: React.CSSProperties = {
         display: 'flex',
         justifyContent: 'space-between',
@@ -47,22 +49,32 @@ const NavBar: React.FC<NavBarProps> = ({
 
     return (
         <nav style={navStyle}>
-            <a href='/'><img src={logo_img} height={40} style={logoStyle} /></a>
+            {isSPA ?
+                (<Link to={'/'}><img src={logo} height={40} style={logoStyle} /></Link>) :
+                (<a href='/'><img src={logo} height={40} style={logoStyle} /></a>)
+            }
+
             <div style={linkContainerStyle}>
-                {port_links.map((link, index) => (
+                {portfolio_links.map((link, index) => (
                     <a key={index} href={link.href} style={linkStyle}>
                         {link.label}
                     </a>
                 ))}
             </div>
             <div style={linkContainerStyle}>
-                {org_links.map((link, index) => (
-                    <a key={index} href={link.href} style={linkStyle}>
-                        {link.label}
-                    </a>
+                {organization_links.map((link, index) => (
+                    isSPA ? (
+                        <Link key={index} to={link.href} style={linkStyle}>
+                            {link.label}
+                        </Link>
+                    ) : (
+                        <a key={index} href={link.href} style={linkStyle} >
+                            {link.label}
+                        </a>
+                    )
                 ))}
             </div>
-        </nav>
+        </nav >
     );
 };
 

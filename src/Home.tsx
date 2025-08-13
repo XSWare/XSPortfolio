@@ -4,7 +4,7 @@ import './Home.css'
 function Home() {
     return (
         <>
-            <NavBar />
+            <NavBar isSPA={true} />
             <div style={{ minHeight: "100vh", justifyContent: "center", alignItems: "center", display: "flex" }}>
                 <h1>Welcome to the xsware homepage!</h1>
             </div>
