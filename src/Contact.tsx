@@ -6,7 +6,9 @@ function Contact() {
             <NavBar isSPA={true} />
             <div style={{ padding: '20px', textAlign: 'center' }}>
                 <h1>Contact Page</h1>
-                <p>This is a dummy contact page.</p>
+                <a href="mailto:xsware@outlook.com">Email</a><br />
+                <a href='https://github.com/xsware'>GitHub</a><br />
+                <a href='https://www.linkedin.com/in/david-hofer-613540187/'>Linkedin</a>
             </div>
         </>
     );
