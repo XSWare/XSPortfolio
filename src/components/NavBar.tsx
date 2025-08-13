@@ -1,5 +1,6 @@
 import React from 'react';
-import logo_img from './../assets/Logo4.png'
+import { Link } from 'react-router-dom';
+import logo_img from './../assets/Logo4.png';
 
 interface NavBarProps {
     logo?: ImageBitmap;
@@ -9,8 +10,8 @@ interface NavBarProps {
 
 const NavBar: React.FC<NavBarProps> = ({
     organization_links: org_links = [
-        { label: "About", href: "#" },
-        { label: "Contact", href: "#" }
+        { label: "About", href: "/about" },
+        { label: "Contact", href: "#" },
     ],
     portfolio_links: port_links = [
         { label: "Shader example", href: "/logo_shader.html" },
@@ -46,7 +47,7 @@ const NavBar: React.FC<NavBarProps> = ({
 
     return (
         <nav style={navStyle}>
-            <a href='./index.html'><img src={logo_img} height={40} style={logoStyle} /></a>
+            <a href='/'><img src={logo_img} height={40} style={logoStyle} /></a>
             <div style={linkContainerStyle}>
                 {port_links.map((link, index) => (
                     <a key={index} href={link.href} style={linkStyle}>
