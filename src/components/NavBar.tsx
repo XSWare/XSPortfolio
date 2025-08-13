@@ -25,14 +25,18 @@ const NavBar: React.FC<NavBarProps> = ({
         color: 'white'
     };
 
+    const linkContainerStyle: React.CSSProperties = {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+    };
+
     const linkStyle: React.CSSProperties = {
         color: 'black',
         fontSize: '16px',
         fontWeight: 'bold',
         textDecoration: 'none',
         margin: '0 10px',
-        textAlign: 'center',
-        verticalAlign: 'middle'
     };
 
     const logoStyle: React.CSSProperties = {
@@ -43,14 +47,14 @@ const NavBar: React.FC<NavBarProps> = ({
     return (
         <nav style={navStyle}>
             <a href='./index.html'><img src={logo_img} height={40} style={logoStyle} /></a>
-            <div style={{ placeContent: "center" }}>
+            <div style={linkContainerStyle}>
                 {port_links.map((link, index) => (
                     <a key={index} href={link.href} style={linkStyle}>
                         {link.label}
                     </a>
                 ))}
             </div>
-            <div style={{ placeContent: "center" }}>
+            <div style={linkContainerStyle}>
                 {org_links.map((link, index) => (
                     <a key={index} href={link.href} style={linkStyle}>
                         {link.label}
