@@ -13,6 +13,14 @@ interface PriceHistoryData {
     close: number;
 }
 
+const chart_coloring =
+{
+    color: '#00b167', // Bullish (green)
+    color0: '#ff6962', // Bearish (red)
+    borderColor: '#00b167',
+    borderColor0: '#ff6962'
+}
+
 const initialOption: EChartsOption = {
     title: {
         text: 'Price History',
@@ -34,12 +42,7 @@ const initialOption: EChartsOption = {
         {
             type: 'candlestick',
             data: [],
-            itemStyle: {
-                color: '#00b167', // Bullish (green)
-                color0: '#ff6962', // Bearish (red)
-                borderColor: '#00b167',
-                borderColor0: '#ff6962'
-            }
+            itemStyle: chart_coloring
         }
     ]
 };
@@ -69,7 +72,7 @@ function PriceHistory() {
                 setOption({
                     ...initialOption,
                     xAxis: { data: timestamps },
-                    series: [{ type: 'candlestick', data: candlestickData }]
+                    series: [{ type: 'candlestick', data: candlestickData, itemStyle: chart_coloring }]
                 });
             } catch (error) {
                 console.error("Failed to fetch price history:", error);
