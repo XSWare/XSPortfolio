@@ -16,7 +16,7 @@ function NavBar({
         { label: "Shader example", href: "/logo_shader.html" },
         { label: "Slicing game", href: "/slicing_game.html" }
     ], organization_links = [
-        { label: "About", href: "/about" },
+        // { label: "About", href: "/about" },
         { label: "Contact", href: "/contact" },
     ] }: NavBarProps) {
 
