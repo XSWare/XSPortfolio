@@ -1,13 +1,15 @@
 import NavBar from './components/NavBar';
+import PriceHistory from './components/PriceHistory';
+import PriceLevels from './components/PriceLevels';
+import "./Orderbook.css"
 
 function OrderBook() {
     return (
         <>
             <NavBar isSPA={true} />
-            <div style={{ padding: "1rem" }}>
-                <h2>Order Book</h2>
-                <p>This is the order book page.</p>
-                {/* Order book component will go here */}
+            <div style={{ display: 'flex', flexDirection: 'row' }} >
+                <PriceHistory />
+                <PriceLevels />
             </div>
         </>
     );
