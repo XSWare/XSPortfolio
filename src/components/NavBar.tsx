@@ -5,7 +5,7 @@ import logo_img from './../assets/Logo4.png';
 interface NavBarProps {
     isSPA: boolean;
     logo?: string;
-    portfolio_links?: { label: string; href: string }[];
+    portfolio_links?: { label: string; href: string, isSPA?: boolean }[];
     organization_links?: { label: string; href: string }[];
 }
 
@@ -14,7 +14,8 @@ function NavBar({
     logo = logo_img,
     portfolio_links = [
         { label: "Shader example", href: "/logo_shader.html" },
-        { label: "Slicing game", href: "/slicing_game.html" }
+        { label: "Slicing game", href: "/slicing_game.html" },
+        { label: "Order Book", href: "/order-book", isSPA: true }
     ], organization_links = [
         // { label: "About", href: "/about" },
         { label: "Contact", href: "/contact" },
@@ -56,9 +57,15 @@ function NavBar({
 
             <div style={linkContainerStyle}>
                 {portfolio_links.map((link, index) => (
-                    <a key={index} href={link.href} style={linkStyle}>
-                        {link.label}
-                    </a>
+                    isSPA && link.isSPA ? (
+                        <Link key={index} to={link.href} style={linkStyle}>
+                            {link.label}
+                        </Link>
+                    ) : (
+                        <a key={index} href={link.href} style={linkStyle} >
+                            {link.label}
+                        </a>
+                    )
                 ))}
             </div>
             <div style={linkContainerStyle}>

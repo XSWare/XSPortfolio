@@ -5,6 +5,7 @@ import './global.css'
 import Home from './Home.tsx'
 import About from './About.tsx'
 import Contact from './Contact.tsx'
+import OrderBook from './OrderBook.tsx'
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
   {
     path: "/contact",
     element: <Contact />,
+  },
+  {
+    path: "/order-book",
+    element: <OrderBook />,
   },
 ]);
 
