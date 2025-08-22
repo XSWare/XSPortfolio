@@ -8,15 +8,22 @@ var option: EChartsOption;
 
 option = {
     xAxis: {
+        inverse: true,
+        type: 'value'
+
+    },
+    yAxis: {
         type: 'category',
         data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
     },
-    yAxis: {
-        type: 'value'
-    },
     series: [
         {
-            data: [120, 200, 150, 80, 70, 110, 130],
+            data: [{ value: 120, itemStyle: { color: 'green' } },
+            { value: 200, itemStyle: { color: 'green' } },
+            { value: 180, itemStyle: { color: 'green' } },
+            { value: 120, itemStyle: { color: 'red' } },
+            { value: 120, itemStyle: { color: 'red' } },
+            { value: 120, itemStyle: { color: 'red' } },],
             type: 'bar'
         }
     ]
