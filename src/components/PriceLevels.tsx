@@ -1,38 +1,109 @@
-
 import * as echarts from 'echarts';
 import ReactECharts from 'echarts-for-react';
+import { useEffect, useState } from 'react';
 
 type EChartsOption = echarts.EChartsOption;
 
-var option: EChartsOption;
+interface PriceLevel {
+    price: number;
+    quantity: number;
+}
 
-option = {
+interface PriceLevelsData {
+    bids: PriceLevel[];
+    asks: PriceLevel[];
+}
+
+const baseOption: EChartsOption = {
+    title: {
+        text: 'Order book',
+        left: 'center'
+    },
+    tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+            type: 'shadow'
+        },
+        formatter: (params: any) => {
+            const data = params[0];
+            const price = data.axisValue;
+            const size = data.value;
+            const color = data.data.itemStyle.color;
+            const type = color === '#00b167' ? 'Bid' : 'Ask';
+            return `${type}<br/>Price: ${price}<br/>Quantity: ${size}`;
+        }
+    },
+    grid: {
+        left: '3%',
+        right: '10%',
+        bottom: '3%',
+        containLabel: true
+    },
     xAxis: {
+        type: 'value',
         inverse: true,
-        type: 'value'
-
     },
     yAxis: {
         type: 'category',
-        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+        data: [],
     },
     series: [
         {
-            data: [{ value: 120, itemStyle: { color: 'green' } },
-            { value: 200, itemStyle: { color: 'green' } },
-            { value: 180, itemStyle: { color: 'green' } },
-            { value: 120, itemStyle: { color: 'red' } },
-            { value: 120, itemStyle: { color: 'red' } },
-            { value: 120, itemStyle: { color: 'red' } },],
-            type: 'bar'
+            name: 'Price Levels',
+            type: 'bar',
+            data: [],
+            barMaxWidth: 10,
         }
     ]
 };
 
 function PriceLevels() {
+    const [option, setOption] = useState<EChartsOption>(baseOption);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch('http://127.0.0.1:8080/list_order_levels');
+                if (!response.ok) {
+                    console.error(`HTTP error! status: ${response.status}`);
+                    return;
+                }
+
+                const data: PriceLevelsData = await response.json();
+
+
+                const y_label = [...data.bids.map(order => order.price), ...data.asks.map(order => order.price)];
+                const bids: echarts.SeriesOption[] = data.bids.map(order => ({ value: order.quantity, itemStyle: { color: '#00b167' } }));
+                const asks: echarts.SeriesOption[] = data.asks.map(order => ({ value: order.quantity, itemStyle: { color: '#ff6962' } }));
+
+                const chartData = [...bids, ...asks];
+
+                setOption({
+                    yAxis: {
+                        type: 'category',
+                        data: y_label,
+                    },
+                    series: [{ data: chartData }]
+                });
+
+            } catch (error) {
+                console.error("Failed to fetch price levels:", error);
+            }
+        };
+
+        fetchData();
+        const intervalId = setInterval(fetchData, 2000);
+
+        return () => clearInterval(intervalId);
+    }, []);
+
     return (
         <>
-            <ReactECharts className='price-levels-chart' option={option} />
+            <ReactECharts
+                className='price-levels-chart'
+                option={option}
+                lazyUpdate={true}
+            />
         </>
     );
 }
