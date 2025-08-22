@@ -1,33 +1,90 @@
 
 import * as echarts from 'echarts';
 import ReactECharts from 'echarts-for-react';
+import { useEffect, useState } from 'react';
 
 type EChartsOption = echarts.EChartsOption;
 
-var option: EChartsOption;
+interface PriceHistoryData {
+    timestamp: string;
+    low: number;
+    high: number;
+    open: number;
+    close: number;
+}
 
-option = {
-    xAxis: {
-        data: ['2017-10-24', '2017-10-25', '2017-10-26', '2017-10-27']
+const initialOption: EChartsOption = {
+    title: {
+        text: 'Price History',
+        left: 'center'
     },
-    yAxis: {},
+    tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+            type: 'cross'
+        }
+    },
+    xAxis: {
+        data: []
+    },
+    yAxis: {
+        scale: true
+    },
     series: [
         {
             type: 'candlestick',
-            data: [
-                [20, 34, 10, 38],
-                [40, 35, 30, 50],
-                [31, 38, 33, 44],
-                [38, 15, 5, 42]
-            ]
+            data: [],
+            itemStyle: {
+                color: '#00b167', // Bullish (green)
+                color0: '#ff6962', // Bearish (red)
+                borderColor: '#00b167',
+                borderColor0: '#ff6962'
+            }
         }
     ]
 };
 
 function PriceHistory() {
+    const [option, setOption] = useState<EChartsOption>(initialOption);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch('http://127.0.0.1:8080/historical_pricing');
+                if (!response.ok) {
+                    console.error(`HTTP error! status: ${response.status}`);
+                    return;
+                }
+                const data: PriceHistoryData[] = await response.json();
+
+                data.reverse();
+
+                const timestamps = data.map(item => {
+                    const date = new Date(item.timestamp);
+                    return `${date.getHours()}:${String(date.getMinutes()).padStart(2, '0')}:${String(date.getSeconds()).padStart(2, '0')}`;
+                });
+
+                const candlestickData = data.map(item => [item.open, item.close, item.low, item.high]);
+
+                setOption({
+                    ...initialOption,
+                    xAxis: { data: timestamps },
+                    series: [{ type: 'candlestick', data: candlestickData }]
+                });
+            } catch (error) {
+                console.error("Failed to fetch price history:", error);
+            }
+        };
+
+        fetchData();
+        const intervalId = setInterval(fetchData, 2000);
+
+        return () => clearInterval(intervalId);
+    }, []);
+
     return (
         <>
-            <ReactECharts className='price-history-chart' option={option}/>
+            <ReactECharts className='price-history-chart' option={option} notMerge={true} lazyUpdate={true} />
         </>
     );
 }
