@@ -10,6 +10,7 @@ function OrderBook() {
     return (
         <>
             <NavBar isSPA={true} />
+            <p>Example order book page, connected to a <a href='https://github.com/CaptainOachkatzl/order-book-challenge'>Rust backend server</a>.</p>
             <div className="order-book-container">
                 <div className="order-book-main">
                     <div className="price-history-container">
