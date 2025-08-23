@@ -103,6 +103,7 @@ function PriceLevels() {
                 className='price-levels-chart'
                 option={option}
                 lazyUpdate={true}
+                style={{ height: '100%', width: '100%' }}
             />
         </>
     );

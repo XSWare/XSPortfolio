@@ -87,7 +87,7 @@ function PriceHistory() {
 
     return (
         <>
-            <ReactECharts className='price-history-chart' option={option} notMerge={true} lazyUpdate={true} />
+            <ReactECharts className='price-history-chart' option={option} notMerge={true} lazyUpdate={true} style={{ height: '100%', width: '100%' }} />
         </>
     );
 }

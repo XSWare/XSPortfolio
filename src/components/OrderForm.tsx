@@ -70,7 +70,7 @@ function OrderForm({ setStatus }: OrderFormProps) {
                     <option value="sell">Sell</option>
                 </select>
             </div>
-            <button type="submit">Send Order</button>
+            <button type="submit">Place Order</button>
         </form>
     );
 }

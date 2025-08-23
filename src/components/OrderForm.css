@@ -5,7 +5,7 @@
     align-items: center;
     padding: 1rem;
     border: 1px solid #ccc;
-    border-radius: 8px;
+    border-radius: 4px;
     max-width: 350px;
     margin: auto;
 }
@@ -26,7 +26,8 @@
 .form-row input,
 .form-row select {
     flex: 1;
-    padding: 0.5rem;
+    padding: 0.25rem;
+    width: 100%;
 }
 
 
