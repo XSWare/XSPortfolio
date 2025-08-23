@@ -54,7 +54,7 @@ function OrderForm({ setStatus }: OrderFormProps) {
     };
 
     return (
-        <form className="orderForm" onSubmit={handleSubmit}>
+        <form className="order-form" onSubmit={handleSubmit}>
             <div className="form-row">
                 <label htmlFor="price">Price:</label>
                 <input id="price" type="number" value={price} onChange={(e) => setPrice(e.target.value)} required min="0" step="1" />
