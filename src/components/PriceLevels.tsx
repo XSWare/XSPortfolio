@@ -63,7 +63,7 @@ function PriceLevels() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('http://127.0.0.1:8080/list_order_levels');
+                const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/list_order_levels`);
                 if (!response.ok) {
                     console.error(`HTTP error! status: ${response.status}`);
                     return;

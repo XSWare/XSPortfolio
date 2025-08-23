@@ -26,8 +26,7 @@ function OrderForm({ setStatus }: OrderFormProps) {
                 quantity: +quantity,
             };
 
-            // on "send order" button press, send parameters via POST to endpoint "http://127.0.0.1:8080/place_order"
-            const response = await fetch('http://127.0.0.1:8080/place_order', {
+            const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/place_order`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
