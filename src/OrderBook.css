@@ -1,0 +1,41 @@
+.order-book-container {
+    min-height: 450px;
+    min-width: 900px;
+}
+
+.order-book-main {
+    display: flex;
+    flex-direction: row;
+    height: 80vh;
+    margin: 20px 0 0 0;
+}
+
+.price-history-container {
+    width: 70%;
+    height: auto;
+    max-height: 800px;
+}
+
+.sidebar-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.price-levels-container {
+    height: 70%;
+    margin: 0 0 10px 0;
+}
+
+.order-form-container {
+    width: 80%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+#status {
+    text-align: center;
+}
