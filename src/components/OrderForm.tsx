@@ -30,9 +30,6 @@ function OrderForm({ setStatus }: OrderFormProps) {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With',
-                    'Access-Control-Allow-Origin': '*',
-                    'Access-Control-Allow-Methods': 'POST',
                 },
                 body: JSON.stringify(order),
             });
