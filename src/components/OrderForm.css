@@ -1,0 +1,43 @@
+.orderForm {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: center;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    max-width: 350px;
+    margin: auto;
+}
+
+.form-row {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.form-row label {
+    width: 80px;
+    text-align: left;
+    margin-right: 1rem;
+    font-weight: bold;
+}
+
+.form-row input,
+.form-row select {
+    flex: 1;
+    padding: 0.5rem;
+}
+
+
+/* disable spinner buttons - Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* disable spinner buttons - Firefox */
+input[type=number] {
+    appearance: textfield;
+}

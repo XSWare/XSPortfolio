@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './OrderForm.css';
 
 interface OrderFormProps {
     setStatus: React.Dispatch<React.SetStateAction<string>>;
@@ -53,16 +54,16 @@ function OrderForm({ setStatus }: OrderFormProps) {
     };
 
     return (
-        <form name='orderForm' onSubmit={handleSubmit}>
-            <div>
+        <form className="orderForm" onSubmit={handleSubmit}>
+            <div className="form-row">
                 <label htmlFor="price">Price:</label>
                 <input id="price" type="number" value={price} onChange={(e) => setPrice(e.target.value)} required min="0" step="1" />
             </div>
-            <div>
+            <div className="form-row">
                 <label htmlFor="quantity">Quantity:</label>
                 <input id="quantity" type="number" value={quantity} onChange={(e) => setQuantity(e.target.value)} required min="0" step="1" />
             </div>
-            <div>
+            <div className="form-row">
                 <label htmlFor="side">Side:</label>
                 <select id="side" value={side} onChange={(e) => setSide(e.target.value)}>
                     <option value="buy">Buy</option>
