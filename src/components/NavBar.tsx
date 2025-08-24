@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import logo_img from './../assets/Logo4.png';
+import * as Constants from './../Constants'
 
 interface NavBarProps {
     isSPA: boolean;
@@ -13,9 +14,9 @@ function NavBar({
     isSPA,
     logo = logo_img,
     portfolio_links = [
-        { label: "Shader example", href: "/logo_shader.html" },
-        { label: "Slicing game", href: "/slicing_game.html" },
-        { label: "Order Book", href: "/order-book", isSPA: true }
+        { label: Constants.TITLE_SHADER_EFFECT, href: Constants.LINK_SHADER_EFFECT },
+        { label: Constants.TITLE_MESH_SLICING, href: Constants.LINK_MESH_SLICING },
+        { label: Constants.TITLE_ORDERBOOK, href: Constants.LINK_ORDERBOOK, isSPA: true }
     ], organization_links = [
         // { label: "About", href: "/about" },
         { label: "Contact", href: "/contact" },
