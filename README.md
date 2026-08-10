@@ -6,6 +6,7 @@ The website can currently be reached at https://portfolio.xsware.at/.
 ## Deploy
 
 - build the project with `npm run build`  
+- start a preview server with `npm run --preview` (DANGER! use `--host 0.0.0.0` to allow connections from all external IP addresses)
 - upload all the files from `/dist` to S3 bucket (`.env` can stay the same unless the API URL changes)
 - adjust permissions for all the relevant files in the S3 bucket
 - invalidate the cloud front cache  
