@@ -6,6 +6,8 @@ import Home from './Home.tsx'
 import About from './About.tsx'
 import Contact from './Contact.tsx'
 import OrderBook from './OrderBook.tsx'
+import { LINK_ORDERBOOK, LINK_FILE_TRANSFER } from './Constants.tsx'
+import FileTransferDownload from './FileTransfer.tsx'
 
 const router = createBrowserRouter([
   {
@@ -21,8 +23,12 @@ const router = createBrowserRouter([
     element: <Contact />,
   },
   {
-    path: "/order-book",
+    path: LINK_ORDERBOOK,
     element: <OrderBook />,
+  },
+  {
+    path: LINK_FILE_TRANSFER,
+    element: <FileTransferDownload />,
   },
 ]);
 

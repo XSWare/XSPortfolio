@@ -17,6 +17,7 @@ function NavBar({
         { label: Constants.TITLE_ORDERBOOK, href: Constants.LINK_ORDERBOOK, isSPA: true },
         { label: Constants.TITLE_SHADER_EFFECT, href: Constants.LINK_SHADER_EFFECT },
         { label: Constants.TITLE_MESH_SLICING, href: Constants.LINK_MESH_SLICING },
+        { label: Constants.TITLE_FILE_TRANSFER, href: Constants.LINK_FILE_TRANSFER },
     ], organization_links = [
         // { label: "About", href: "/about" },
         { label: "Contact", href: "/contact" },
