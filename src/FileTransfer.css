@@ -1,0 +1,40 @@
+#root {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.file-transfer-download-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin: 1rem auto;
+}
+
+.file-transfer-preview {
+    max-width: 90%;
+    height: auto;
+    max-height: 60vh;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.file-transfer-download-button {
+    padding: 0.6rem 1.2rem;
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
+    background-color: #56ff51;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.file-transfer-download-button:hover {
+    background-color: #3ebb3e;
+}
+
+.file-transfer-note {
+    font-size: 12px;
+    opacity: 0.7;
+}
